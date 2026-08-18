@@ -1,13 +1,13 @@
-import { Suspense } from "react"
-import { AuthShell } from "@/components/auth/auth-shell"
-import { AdminLogin } from "@/components/auth/admin-login"
+import { AppShell } from "@/components/app/app-shell"
+import { AdminClient } from "@/components/app/admin-client"
+import { RouteGuard } from "@/components/auth/route-guard"
 
-export default function AdminLoginPage() {
+export default function AdminPage() {
   return (
-    <AuthShell>
-      <Suspense fallback={<p className="text-sm text-muted-foreground">Loading…</p>}>
-        <AdminLogin />
-      </Suspense>
-    </AuthShell>
+    <AppShell active="Admin">
+      <RouteGuard role="admin">
+        <AdminClient />
+      </RouteGuard>
+    </AppShell>
   )
 }
